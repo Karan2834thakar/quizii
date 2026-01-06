@@ -86,7 +86,7 @@ const RegisterPage = () => {
                             </div>
                         </div>
 
-                        <button type="submit" className="btn-primary w-full group">
+                        <button type="submit" className="btn-primary w-full group ">
                             Register Now <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                         </button>
                     </form>
