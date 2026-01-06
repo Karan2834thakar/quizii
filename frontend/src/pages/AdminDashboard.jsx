@@ -19,7 +19,7 @@ const AdminDashboard = () => {
 
         const fetchQuizzes = async () => {
             try {
-                const { data } = await axios.get('http://localhost:5000/api/admin/quizzes', {
+                const { data } = await axios.get('https://quizii.onrender.com/api/admin/quizzes', {
                     headers: { Authorization: `Bearer ${user.token}` }
                 });
                 setQuizzes(data);

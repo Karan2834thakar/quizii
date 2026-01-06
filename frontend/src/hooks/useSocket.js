@@ -5,7 +5,7 @@ export const useSocket = (roomCode) => {
     const socketRef = useRef();
 
     useEffect(() => {
-        socketRef.current = io('http://localhost:5000/quiz');
+        socketRef.current = io('https://quizii.onrender.com/quiz');
 
         return () => {
             if (socketRef.current) {
