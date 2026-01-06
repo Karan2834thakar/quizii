@@ -74,8 +74,14 @@ const QuizPage = () => {
             }
         });
 
-        on('reveal_answer', () => {
-            console.log('[DEBUG] Received reveal_answer');
+        on('reveal_answer', (data) => {
+            console.log('[DEBUG] Received reveal_answer', data);
+            if (data && data.correctOptionIndex !== undefined) {
+                setCurrentQuestion(prev => ({
+                    ...prev,
+                    correctOptionIndex: data.correctOptionIndex
+                }));
+            }
             setIsRevealing(true);
         });
 

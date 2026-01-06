@@ -126,8 +126,14 @@ export const handleQuizSocket = (io) => {
             }
         });
 
-        socket.on('host:reveal_answer', ({ roomCode }) => {
-            quizNamespace.to(roomCode).emit('reveal_answer');
+        socket.on('host:reveal_answer', async ({ roomCode }) => {
+            const quiz = await Quiz.findOne({ roomCode }).populate('questions');
+            if (quiz && quiz.status === 'active') {
+                const question = quiz.questions[quiz.currentQuestionIndex];
+                quizNamespace.to(roomCode).emit('reveal_answer', {
+                    correctOptionIndex: question.correctOptionIndex
+                });
+            }
         });
 
         socket.on('host:next_question', async ({ roomCode }) => {
